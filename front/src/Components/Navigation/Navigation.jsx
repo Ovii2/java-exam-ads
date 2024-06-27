@@ -13,14 +13,10 @@ const Navigation = () => {
   const userName = isLoggedIn ? getUserNameFromToken(token) : null;
 
   const logoutHandler = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('role');
-    localStorage.removeItem('username');
+    localStorage.clear();
     toast.success('Logged out!');
     navigate('/login', { replace: true });
   };
-
   return (
     <nav>
       {userName && <span className='username'>Account: {userName}</span>}
@@ -44,9 +40,9 @@ const Navigation = () => {
         <>
           <NavLink
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-            to='/pets'
+            to='/categories'
           >
-            Pets
+            Categories
           </NavLink>
           <button className='logout' onClick={logoutHandler}>
             Logout

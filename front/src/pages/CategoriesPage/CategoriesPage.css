@@ -1,0 +1,19 @@
+.categories-page {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 20%;
+  padding: 2rem;
+  border-radius: 0.3rem;
+}
+
+.protected-nav-link {
+  color: var(--tomato);
+}
+
+.no-categories {
+  text-align: center;
+  font-weight: 600;
+}
