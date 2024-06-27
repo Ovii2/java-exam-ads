@@ -1,0 +1,100 @@
+.ad-details-container {
+  width: 70vw;
+}
+
+.ad-details-card {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.ad-details-card-image {
+  width: 14vw;
+}
+
+.ad-details-card-info {
+  width: 30vw;
+}
+
+.back-arrow {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  width: 9rem;
+  margin-bottom: 0.4rem;
+}
+
+.edit-ad-description {
+  width: -webkit-fill-available;
+  height: 10rem;
+}
+
+.input-pages {
+  display: flex;
+}
+
+.input-isbn {
+  display: flex;
+}
+
+.input-book-title {
+  display: flex;
+}
+
+.input-title {
+  width: 20rem;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.2rem;
+}
+
+.input-ad-image {
+  display: flex;
+  align-items: stretch;
+  position: absolute;
+  transform: translate(0.2rem, -12rem);
+  z-index: 10;
+}
+
+.faded-image {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.edit-image-btn {
+  margin-top: 0.5rem;
+  border: none;
+  background-color: var(--lime-green);
+  padding: 0.3rem 1.5rem;
+  color: var(--black);
+}
+
+.input-image {
+  width: 13rem;
+}
+
+.add-comment-btn {
+  border: none;
+  background: var(--gradient-violet-blue);
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+}
+
+.no-ad-details {
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}

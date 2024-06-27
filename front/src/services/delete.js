@@ -24,3 +24,16 @@ export const deleteCategory = async (id) => {
     throw new Error(`Error deleting category ${error.message}`);
   }
 };
+
+export const deleteAd = async (id) => {
+  try {
+    const resp = await axios.delete(`${API_URL}/ads/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return resp.data;
+  } catch (error) {
+    throw new Error(`Error deleting ad ${error.message}`);
+  }
+};

@@ -1,5 +1,6 @@
 package lt.techin.ovidijus.back.exceptions.handler;
 
+import lt.techin.ovidijus.back.exceptions.AdNotFoundException;
 import lt.techin.ovidijus.back.exceptions.CategoryNotFoundException;
 import lt.techin.ovidijus.back.exceptions.NotAdminException;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotAdminException.class)
     public ResponseEntity<ErrorDetails> notAdminExceptionHandler(NotAdminException ex) {
+        ErrorDetails errorDetails = new ErrorDetails(ex.getMessage());
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AdNotFoundException.class)
+    public ResponseEntity<ErrorDetails> exceptionBookNotFoundHandler(AdNotFoundException ex) {
         ErrorDetails errorDetails = new ErrorDetails(ex.getMessage());
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }

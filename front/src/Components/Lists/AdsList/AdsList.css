@@ -1,0 +1,6 @@
+.ads-list {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.8rem;
+}

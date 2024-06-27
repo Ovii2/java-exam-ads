@@ -9,7 +9,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import CategoriesPage from './pages/CategoriesPage/CategoriesPage';
+import AdsPage from './pages/AdsPage/AdsPages';
+import { AdsProvider } from './Context/AdsContext/AdsContext';
+import AdDetailsPage from './pages/AdDetailsPage/AdDetailsPage';
 
 function App() {
   const [user, setUser] = useState({});
@@ -19,24 +23,42 @@ function App() {
     <>
       <ToastContainer autoClose={800} position='top-center' />
       <Header />
-      <CategoriesProvider>
-        <UserContext.Provider value={{ user, setUpdate }}>
-          <Routes>
-            <Route path='/' element={<Navigate to='/register' />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route
-              path='/categories'
-              element={
-                <ProtectedRoute adminOnly={true}>
-                  <CategoriesPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route />
-          </Routes>
-        </UserContext.Provider>
-      </CategoriesProvider>
+      <AdsProvider>
+        <CategoriesProvider>
+          <UserContext.Provider value={{ user, setUpdate }}>
+            <Routes>
+              <Route path='/' element={<Navigate to='/register' />} />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route path='/login' element={<LoginPage />} />
+              <Route
+                path='/categories'
+                element={
+                  <ProtectedRoute adminOnly={true}>
+                    <CategoriesPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path='/ads'
+                element={
+                  <ProtectedRoute>
+                    <AdsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path='/ads/:id'
+                element={
+                  <ProtectedRoute>
+                    <AdDetailsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path='*' element={<NotFoundPage />} />
+            </Routes>
+          </UserContext.Provider>
+        </CategoriesProvider>
+      </AdsProvider>
       <Footer />
     </>
   );
