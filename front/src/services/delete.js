@@ -37,3 +37,16 @@ export const deleteAd = async (id) => {
     throw new Error(`Error deleting ad ${error.message}`);
   }
 };
+
+export const deleteComment = async (commentId) => {
+  try {
+    const resp = await axios.delete(`${API_URL}/ads/comments/${commentId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return resp.data;
+  } catch (error) {
+    throw new Error(`Error deleting comment: ${error.message}`);
+  }
+};

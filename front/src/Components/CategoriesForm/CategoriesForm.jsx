@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { postCategory } from '../../services/post';
+import { getCategories } from '../../services/get';
 import { toast } from 'react-toastify';
 import TextField from '@mui/material/TextField';
 
@@ -11,6 +12,7 @@ const CategoriesForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [error, setError] = useState('');
   const { setUpdate, setCategories } = useContext(CategoriesContext);
+  const [existingCategories, setExistingCategories] = useState([]);
 
   const {
     register,
@@ -24,7 +26,29 @@ const CategoriesForm = () => {
     },
   });
 
+  const fetchCategories = async () => {
+    try {
+      const categories = await getCategories();
+      setExistingCategories(categories);
+    } catch (error) {
+      setError(error.message);
+      toast.error('Error fetching categories');
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   const formSubmitHandler = async (data) => {
+    const categoryExists = existingCategories.some(
+      (category) => category.title.toLowerCase() === data.title.toLowerCase()
+    );
+
+    if (categoryExists) {
+      toast.error('Category already exists');
+      return;
+    }
     try {
       const response = await postCategory(data);
       setUpdate((update) => update + 1);

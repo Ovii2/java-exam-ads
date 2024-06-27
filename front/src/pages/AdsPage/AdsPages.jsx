@@ -5,9 +5,11 @@ import './AdsPage.css';
 import { getAllAdsAuth } from '../../services/get';
 import AdsList from '../../Components/Lists/AdsList/AdsList';
 import AdsContext from '../../Context/AdsContext/AdsContext';
+import SearchBar from '../../Components/SearchBar/SearchBar';
 
 const AdsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [filteredAds, setFilteredAds] = useState([]);
   const { update, setAds, ads } = useContext(AdsContext);
 
   const fetchData = async () => {
@@ -31,12 +33,13 @@ const AdsPage = () => {
       <h1 className='ads-title'>Ads</h1>
       <div className='ads-page'>
         <AdsForm />
+        <SearchBar setFilteredAds={setFilteredAds} />
         {isLoading ? (
           <p>Loading...</p>
-        ) : ads.length === 0 ? (
+        ) : filteredAds.length === 0 ? (
           <p className='no-ads'>No ads available</p>
         ) : (
-          <AdsList />
+          <AdsList filteredAds={filteredAds} />
         )}
       </div>
     </>

@@ -5,7 +5,7 @@ import Navigation from '../Navigation/Navigation';
 const Header = () => {
   return (
     <div className='header'>
-      <div className='header-logo'>logo</div>
+      <img className='header-logo' src='/img/logo.png' alt='logo' />
       <Navigation />
     </div>
   );

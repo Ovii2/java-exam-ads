@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-
+import CommentsContext from '../../Context/CommentsContext/CommentsContext';
 import CommentsForm from '../../Components/CommentsForm/CommentsForm';
 
 import './AdDetailsPage.css';
-import CommentsContext from '../../Context/CommentsContext/CommentContext';
+
 import CommentsList from '../../Components/Lists/CommentsList/CommentsList';
 import { getAllCommentsAuth } from '../../services/get';
 import { useParams } from 'react-router-dom';
+import AdDetailsCard from '../../Components/Cards/AdDetailsCard/AdDetailsCard';
 
 const AdDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);

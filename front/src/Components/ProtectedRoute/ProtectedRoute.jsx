@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getUserRoleFromToken } from '../../utils/jwt';
 import './ProtectedRoute.css';
 
 const ProtectedRoute = ({ children, adminOnly, ...rest }) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    let role = '';
-
     if (token) {
-      role = getUserRoleFromToken(token);
+      const role = getUserRoleFromToken(token);
       if (role) setIsAuthorized(true);
-      if (role == 'ADMIN') setIsAdmin(true);
+      if (role === 'ADMIN') setIsAdmin(true);
     }
   }, []);
 
@@ -23,7 +22,7 @@ const ProtectedRoute = ({ children, adminOnly, ...rest }) => {
     return (
       <div className='protected-container'>
         <h2>This content is accessible to authorized users.</h2>
-        <NavLink className='protected-nav-link' to='/login'>
+        <NavLink className='protected-nav-link' to='/login' state={{ from: location }}>
           Login here
         </NavLink>
       </div>

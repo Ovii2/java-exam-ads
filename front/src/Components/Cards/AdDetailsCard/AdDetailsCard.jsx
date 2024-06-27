@@ -5,14 +5,14 @@ import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutl
 import CheckIcon from '@mui/icons-material/Check';
 import CancelIcon from '@mui/icons-material/Cancel';
 import EditIcon from '@mui/icons-material/Edit';
-
-import './AdDetailsCard.css';
 import { NavLink, useParams } from 'react-router-dom';
 import { updateDataAuth } from '../../../services/update';
 import { getUserRoleFromToken } from '../../../utils/jwt';
 import { useForm } from 'react-hook-form';
 import CategoriesContext from '../../../Context/CategoriesContext/CategoriesContext';
 import AdsContext from '../../../Context/AdsContext/AdsContext';
+
+import './AdDetailsCard.css';
 
 const AdDetailsCard = () => {
   const [error, setError] = useState('');
@@ -134,39 +134,6 @@ const AdDetailsCard = () => {
       </NavLink>
       {ad ? (
         <div className='ad-details-card'>
-          {/* <div className='image-container'>
-            {editImage && role === 'ADMIN' ? (
-              <div className='input-book-image'>
-                <div className='errors'>
-                  <input
-                    className='input-image'
-                    placeholder='Enter book url'
-                    {...register('image', { required: 'Image url is required' })}
-                    onChange={(e) => setValue('image', e.target.value)}
-                  />
-                  {errors.image && <div className='error'>{errors.image.message}</div>}
-                </div>
-                <CheckIcon
-                  sx={{ color: 'green', cursor: 'pointer' }}
-                  onClick={handleSubmit(handleBookImageChange)}
-                />
-                <CancelIcon
-                  sx={{ color: 'tomato', cursor: 'pointer' }}
-                  onClick={() => setEditImage(false)}
-                />
-              </div>
-            ) : (
-              <button className='edit-image-btn' onClick={() => setEditImage(true)}>
-                edit image
-              </button>
-            )}
-            <img
-              className={`book-details-card-image ${editImage ? 'faded-image' : ''}`}
-              src={`${ad.image}`}
-              alt='book'
-            />
-          </div> */}
-
           <div className='ad-details-card-info'>
             {editTitle && role === 'ADMIN' ? (
               <div className='input-ad-title'>
