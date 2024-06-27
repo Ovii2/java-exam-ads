@@ -9,10 +9,8 @@ The Advertisement Management System is a web-based platform designed to facilita
 - **Category Management**:
   - Create, edit, and delete ad categories (e.g., “Real Estate,” “Electronics,” “Jobs”).
 - **Ad Management**:
-  - Add new ads, update existing ones, and remove outdated ads.
-- **User Management**:
 
-  - Manage user accounts, grant permissions, and handle user requests
+  - Add new ads, update existing ones, and remove outdated ads.
 
   ## User Capabilities
 
